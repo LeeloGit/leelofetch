@@ -1,0 +1,3 @@
+if awk.arg is equal to null after parsing the prevois argument, then parse a new argument, else continue with the prevois arg. 
+
+
