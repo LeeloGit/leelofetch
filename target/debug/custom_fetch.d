@@ -1,1 +1,1 @@
-/home/liam/leelofetch/target/debug/custom_fetch: /home/liam/leelofetch/src/main.rs
+/home/liam/Rust/leelofetch/target/debug/custom_fetch: /home/liam/Rust/leelofetch/src/main.rs

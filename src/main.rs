@@ -19,7 +19,7 @@ fn main(){
         leelofetch.fg(term::color::GREEN).unwrap();
         print!("Hostname:");
         leelofetch.fg(term::color::WHITE).unwrap();
-        print!("           {}",String::from_utf8_lossy(&hostname.stdout));
+        print!("          {}",String::from_utf8_lossy(&hostname.stdout));
 
 //Kernel
     let kernel = Command::new("uname")  
