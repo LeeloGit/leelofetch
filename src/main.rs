@@ -32,19 +32,26 @@ fn main(){
      print!("            {}", String::from_utf8_lossy(&kernel.stdout));
 
 //OS
-    let os = Command::new("uname")
-        .arg("-o")
+    let osin = Command::new("uname")
+        .arg("-a")
+        .stdout(Stdio::piped()).spawn().unwrap();
+        
+    let osout = Command::new("awk")
+        .arg("/Linux/{print $2}")
+        .stdin(osin.stdout.unwrap())
         .output()
-        .expect("Failed -o");
+        .expect("awk failed");
     leelofetch.fg(term::color::GREEN).unwrap();
     print!("OS:");
     leelofetch.fg(term::color::WHITE).unwrap();
-    print!("                {}", String::from_utf8_lossy(&os.stdout));
+    print!("                {}", String::from_utf8_lossy(&osout.stdout));
 
 
-//Packages 
-    let pkgs = Command::new("pacman")
-        .arg("-Q")
+
+//Packages
+  
+    let pkgs = Command::new("dpkg")
+        .arg("--list")
         .stdout(Stdio::piped()).spawn().unwrap();
 
     let pkgs2 = Command::new("wc")
